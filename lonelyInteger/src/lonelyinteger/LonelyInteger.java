@@ -1,9 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *HackerRank Problem
+ *https://www.hackerrank.com/challenges/lonely-integer?h_r=internal-search
  */
 package lonelyinteger;
+
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +16,30 @@ public class LonelyInteger {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = in.nextInt();
+        }
+        System.out.println(lonelyInteger(a));
     }
-    
+
+    private static int lonelyInteger(int[] a) {
+        boolean found = false;
+        for (int i = 0, n = a.length; i < n; i++){
+            found = false;
+            for (int j = 0; j < n; j++){
+                if (a[i] == a[j] && i != j){
+                    found = true;
+                    break;
+                }
+            }
+            if (!found){
+                return a[i];
+            }        
+        }
+        return 0;
+    }
+
 }
